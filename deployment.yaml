@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: spring-petclinic
-        image: tobaalo/spring-petclinic-project:latest
+        image: tobaalo/spring-petclinic-project:1.0.2
         ports:
         - containerPort: 8080
           protocol: TCP
