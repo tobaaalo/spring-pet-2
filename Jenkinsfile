@@ -1,6 +1,11 @@
 pipeline {
     agent { label 'Jenkins-Agent' }
     
+    environment {
+        APP_NAME = "spring-pet-2"
+        IMAGE_TAG = "1.0.${BUILD_NUMBER}"
+    }
+    
     stages {
         stage("Cleanup Workspace") {
             steps {
@@ -18,7 +23,7 @@ pipeline {
             steps {
                 sh """
                    cat deployment.yaml
-                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
+                   sed -i "s/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g" deployment.yaml
                    cat deployment.yaml
                 """
             }
